@@ -39,6 +39,11 @@ class MessageVM:ViewModel() {
                     selectedMessage = uiState.value.messages.find { it.id==authenticationEvent.id }
                 )
             }
+            is ConversationEvent.UnsSelectMessage -> {
+                uiState.value=uiState.value.copy(
+                    selectedMessage = null
+                )
+            }
         }
     }
     private fun messagesExcluding(id:String): List<Message> {
